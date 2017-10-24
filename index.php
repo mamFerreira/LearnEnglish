@@ -1,3 +1,4 @@
 <?php
 
-echo "Hola Mundo";
+//Ejemplo de mensaje de salida
+echo "Hola Mundo <br>";
