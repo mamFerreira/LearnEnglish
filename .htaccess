@@ -1,5 +1,9 @@
 RewriteEngine On
+
 RewriteRule ^$ index.php?controlador=home&id=0
 RewriteRule ^home$ index.php?controlador=home&id=0
+
 RewriteRule ^gramatica$ index.php?controlador=gramatica&id=0
-RewriteRule ^vocabulario$ index.php?controlador=vocabulario&id=0
+
+RewriteRule ^vocabulario$ index.php?controlador=vocabulario&id=
+RewriteRule ^vocabulario/(verbosRegulares|verbosIrregulares|verbosCompuesto)$ index.php?controlador=vocabulario&id=$1

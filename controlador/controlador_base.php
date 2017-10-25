@@ -22,14 +22,17 @@ class controlador_base{
     }
            
     private function render_pagina($titulo, $pagina_contenedor) {
+        global $ruta_base;
+        
         $pagina = file_get_contents("vista/defecto.php");
         
         $pagina = preg_replace("/\#HEAD\#/ms", file_get_contents("vista/head.php"), $pagina);
         $pagina = preg_replace("/\#MENU\#/ms", file_get_contents("vista/menu.php"), $pagina);
-        $pagina = $this->activar_menu($pagina,$titulo);
+        $pagina = $this->activar_menu($pagina,$titulo);                      
         $pagina = preg_replace("/\#CONTENEDOR\#/ms", file_get_contents("vista/subvistas/".$pagina_contenedor), $pagina);
         $pagina = preg_replace("/\#PIE\#/ms", file_get_contents("vista/pie.php"), $pagina);
         $pagina = preg_replace("/\#TITULO\#/ms", "Learn English - ".$titulo, $pagina);
+        $pagina = preg_replace("/\#RUTA_BASE\#/ms", $ruta_base, $pagina);
         
         echo $pagina;
     }
@@ -97,7 +100,21 @@ class controlador_base{
     }
     
     function vocabulario(){
-        $this->render_pagina("Vocabulario","vocabulario.php");
+        if (strlen($this->rutas->get_id())==0){
+            $this->render_pagina("Vocabulario","vocabulario.php");
+        }else{            
+            switch ($this->rutas->get_id()){
+                case "verbosRegulares":
+                    $this->render_pagina("Vocabulario: Verbos Regulares","listadoVerbosRegulares.php");
+                    break;
+                case "verbosIrregulares":
+                    $this->render_pagina("Vocabulario: Verbos Irregulares","listadoVerbosIrregulares.php");
+                    break;
+                case "verbosCompuesto":
+                    $this->render_pagina("Vocabulario: Verbos Compuestos","listadoVerbosCompuestos.php");
+                    break;
+            }
+        }
     }
     
         
