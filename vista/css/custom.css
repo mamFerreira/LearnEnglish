@@ -20,6 +20,10 @@ body {
   line-height: 40px;
 }
 
+.container{
+    padding-bottom: 19px;
+}
+
 .footer {
   padding-top: 19px;
   color: #777;
@@ -44,6 +48,10 @@ body {
 }
 .marketing p + h4 {
   margin-top: 28px;
+}
+
+.activa{
+	background-color: #e5e5e5;
 }
 
 @media screen and (min-width: 768px) {
