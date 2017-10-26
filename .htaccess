@@ -1,9 +1,13 @@
 RewriteEngine On
 
-RewriteRule ^$ index.php?controlador=home&id=0
-RewriteRule ^home$ index.php?controlador=home&id=0
+RewriteRule ^$ index.php?controlador=home
 
-RewriteRule ^gramatica$ index.php?controlador=gramatica&id=0
+RewriteRule ^home$ index.php?controlador=home
+RewriteRule ^gramatica$ index.php?controlador=gramatica
+RewriteRule ^vocabulario$ index.php?controlador=vocabulario
+RewriteRule ^configuracion$ index.php?controlador=configuracion
 
-RewriteRule ^vocabulario$ index.php?controlador=vocabulario&id=
-RewriteRule ^vocabulario/(verbosRegulares|verbosIrregulares|verbosCompuesto)$ index.php?controlador=vocabulario&id=$1
+RewriteRule ^vocabulario/(verbosRegulares|verbosIrregulares|verbosCompuestos|otroVocabulario)$ index.php?controlador=vocabulario&opcion=$1
+
+RewriteRule ^configuracion/(NuevoVerboRegular|NuevoVerboIrregular|NuevoVerboCompuesto)$ index.php?controlador=configuracion&opcion=$1
+RewriteRule ^configuracion/grabar/(VerboRegular)$ index.php?controlador=grabar&opcion=$1 [QSA,L]

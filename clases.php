@@ -1,5 +1,6 @@
 <?php
-require_once 'clases/rutas.php';
+require_once 'config/global.php';
+require_once 'clases/Rutas.php';
 require_once 'controlador/controlador_base.php';
-require_once 'configuracion.php';
-//require_once 'modelo/receta_modelo.php';
+
+

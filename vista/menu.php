@@ -12,39 +12,37 @@
             </div>
             <div class="collapse navbar-collapse" id="acolapsar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li #OPCION1#><a href="#RUTA_BASE#/home"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
-                    <li class="dropdown #OPCION2#">
-                        <a class="dropdown" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span> Gramática<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#RUTA_BASE#/gramatica">Menu</a></li>                                  
-                        </ul>
-                    </li>
+                    <li class="#OPCION1#"><a href="#RUTA_BASE#/home"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
+                    <li class="#OPCION2#"><a href="#RUTA_BASE#/gramatica"><span class="glyphicon glyphicon-book"></span> Gramática</a></li>
                     <li class="dropdown #OPCION3#">
                         <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-header"></span> Vocabulario<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="#RUTA_BASE#/vocabulario/verbosRegulares">Regular Verbs</a></li>
                             <li><a href="#RUTA_BASE#/vocabulario/verbosIrregulares">Irregular Verbs</a></li>
-                            <li><a href="#RUTA_BASE#/vocabulario/verbosCompuesto">Phrasal Verbs</a></li>
-                            <li><a href="#RUTA_BASE#/vocabulario">Other Vocabulary</a></li>                                    
+                            <li><a href="#RUTA_BASE#/vocabulario/verbosCompuestos">Phrasal Verbs</a></li>
+                            <li><a href="#RUTA_BASE#/vocabulario/otroVocabulario">Other Vocabulary</a></li>                                    
                         </ul>
                     </li>
-                    <li class="dropdown" #OPCION4#>
+                    <li class="dropdown #OPCION4#">
                         <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-pencil"></span> Ejercicios<b class="caret"></b></a> 
                         <ul class="dropdown-menu">
-                            <li><a href="#RUTA_BASE#/">Verbos Irregulares</a></li>
-                            <li><a href="#RUTA_BASE#/">Verbos Regulares</a></li>
-                            <li><a href="#RUTA_BASE#/">Otros</a></li>
-                            <li><a href="#RUTA_BASE#/">Todos</a></li>
+                            <li><a href="#RUTA_BASE#/">Regular Verbs</a></li>
+                            <li><a href="#RUTA_BASE#/">Irregular Verbs</a></li>
+                            <li><a href="#RUTA_BASE#/">Phrasal Verbs</a></li>
+                            <li><a href="#RUTA_BASE#/">Other Vocabulary</a></li>
+                            <li><a href="#RUTA_BASE#/">All</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown" #OPCION5#>
+                    <li class="dropdown #OPCION5#">
                         <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Configuración<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#RUTA_BASE#/">Añadir</a></li>
-                            <li><a href="#RUTA_BASE#/">Editar</a></li>
+                            <li><a href="#RUTA_BASE#/configuracion/NuevoVerboRegular">Add Regular Verbs</a></li>
+                            <li><a href="#RUTA_BASE#/configuracion/NuevoVerboIrregular">Add Irregular Verbs</a></li>
+                            <li><a href="#RUTA_BASE#/configuracion/NuevoVerboCompuesto">Add Phrasal Verbs</a></li>
+                            <li><a href="#RUTA_BASE#/configuracion/NuevoOtraPalabra">Add Other Vocabulary</a></li>
                         </ul>
                     </li>
-                    <li #OPCION6#><a href="#"><span class="glyphicon glyphicon-user"></span> Sobre mi</a></li>                            
+                    <li class="#OPCION6#"><a href="#"><span class="glyphicon glyphicon-user"></span> Sobre mi</a></li>                            
                 </ul>
             </div>
         </div>

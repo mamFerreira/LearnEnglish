@@ -4,7 +4,11 @@
   <body>
     <div class="container">
       #MENU#
-      #CONTENEDOR#
+      <div class="container">
+            <div class="col-lg-12">
+                #CONTENEDOR#
+            </div>
+        </div>      
       #PIE#
     </div> 
   </body>

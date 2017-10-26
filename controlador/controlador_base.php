@@ -1,11 +1,14 @@
 <?php
 
+require_once 'controlador_vocabulario.php';
+
 class controlador_base{
     
     private $rutas;
+    private $pagina;
     
     function __construct() {
-        
+        $this->pagina = file_get_contents("vista/defecto.php");
     }
     
     function set_rutas ($rutas) {
@@ -14,107 +17,142 @@ class controlador_base{
     
     function repartidor() {
         if (method_exists($this, $this->rutas->get_controlador())) {
-            $ruta = $this->rutas->get_controlador();
-            $this->$ruta();
+            $controlador = $this->rutas->get_controlador();
+            $opcion = $this->rutas->get_opcion();
+            $this->$controlador($opcion);
         } else {
-            $this->defecto();
+            $this->home();
         }
     }
            
-    private function render_pagina($titulo, $pagina_contenedor) {
-        global $ruta_base;
+    private function render_pagina($titulo) {
+        global $ruta_base;                
         
-        $pagina = file_get_contents("vista/defecto.php");
+        $this->pagina = preg_replace("/\#HEAD\#/ms", file_get_contents("vista/head.php"), $this->pagina);
+        $this->pagina = preg_replace("/\#MENU\#/ms", file_get_contents("vista/menu.php"), $this->pagina);                            
         
-        $pagina = preg_replace("/\#HEAD\#/ms", file_get_contents("vista/head.php"), $pagina);
-        $pagina = preg_replace("/\#MENU\#/ms", file_get_contents("vista/menu.php"), $pagina);
-        $pagina = $this->activar_menu($pagina,$titulo);                      
-        $pagina = preg_replace("/\#CONTENEDOR\#/ms", file_get_contents("vista/subvistas/".$pagina_contenedor), $pagina);
-        $pagina = preg_replace("/\#PIE\#/ms", file_get_contents("vista/pie.php"), $pagina);
-        $pagina = preg_replace("/\#TITULO\#/ms", "Learn English - ".$titulo, $pagina);
-        $pagina = preg_replace("/\#RUTA_BASE\#/ms", $ruta_base, $pagina);
+        $this->pagina = preg_replace("/\#PIE\#/ms", file_get_contents("vista/pie.php"), $this->pagina);
+        $this->pagina = preg_replace("/\#TITULO\#/ms", "Learn English - ".$titulo, $this->pagina);
+        $this->pagina = preg_replace("/\#RUTA_BASE\#/ms", $ruta_base, $this->pagina);
         
-        echo $pagina;
+        $this->pagina = $this->activar_menu($this->pagina);  
+        
+        echo $this->pagina;
     }
     
-    private function activar_menu($pagina,$titulo) {
-        switch ($titulo) {
-            case "Inicio":
-                $pagina = preg_replace("/\#OPCION1\#/ms", "class='activa'", $pagina);
-                $pagina = preg_replace("/\#OPCION2\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION3\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION4\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION5\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION6\#/ms", "", $pagina);               
+    private function render_contenedor ($sub_vista){
+        $this->pagina = preg_replace("/\#CONTENEDOR\#/ms", file_get_contents("vista/subvistas/".$sub_vista), $this->pagina);  
+    }
+    
+    private function activar_menu($pagina) {
+
+        switch ($this->rutas->get_controlador()) {
+            case "home":
+                $pagina = preg_replace("/\#OPCION1\#/ms", "activa", $pagina);                         
                 break;
-            case "Gramática":
-                $pagina = preg_replace("/\#OPCION2\#/ms", "activa", $pagina);
-                $pagina = preg_replace("/\#OPCION1\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION3\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION4\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION5\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION6\#/ms", "", $pagina);               
+            case "gramatica":
+                $pagina = preg_replace("/\#OPCION2\#/ms", "activa", $pagina);                             
                 break;
-            case "Vocabulario":
-                $pagina = preg_replace("/\#OPCION3\#/ms", "activa", $pagina);
-                $pagina = preg_replace("/\#OPCION2\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION1\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION4\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION5\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION6\#/ms", "", $pagina);               
+            case "vocabulario":
+                $pagina = preg_replace("/\#OPCION3\#/ms", "activa", $pagina);                           
                 break;
-            case "Ejercicios":
-                $pagina = preg_replace("/\#OPCION4\#/ms", "class='activa'", $pagina);
-                $pagina = preg_replace("/\#OPCION2\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION3\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION1\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION5\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION6\#/ms", "", $pagina);               
+            case "ejercicios":
+                $pagina = preg_replace("/\#OPCION4\#/ms", "activa", $pagina);                             
                 break;
-            case "Configuración":
-                $pagina = preg_replace("/\#OPCION5\#/ms", "class='activa'", $pagina);
-                $pagina = preg_replace("/\#OPCION2\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION3\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION4\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION1\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION6\#/ms", "", $pagina);               
+            case "configuracion":                
+                $pagina = preg_replace("/\#OPCION5\#/ms", "activa", $pagina);                          
                 break;
-            case "Sobre mi":
-                $pagina = preg_replace("/\#OPCION6\#/ms", "class='active'", $pagina);
-                $pagina = preg_replace("/\#OPCION2\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION3\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION4\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION5\#/ms", "", $pagina);
-                $pagina = preg_replace("/\#OPCION1\#/ms", "", $pagina);               
+            case "sobre_mi":
+                $pagina = preg_replace("/\#OPCION6\#/ms", "activa", $pagina);                              
                 break;           
         }
+        
+        for ($i=1; $i<7; $i++){
+            $pagina = preg_replace("/\#OPCION".$i."\#/ms", "", $pagina);
+        }
+        
+        
         return $pagina;
     }
-    
-    function home() {
-        $this->render_pagina("Inicio","home.php");
+           
+    private function home() {
+        
+        $this->render_contenedor("home.php"); 
+        $this->render_pagina("Inicio");
+               
     }
-    
-    function gramatica() {
-        $this->render_pagina("Gramática","gramatica.php");
-    }
-    
-    function vocabulario(){
-        if (strlen($this->rutas->get_id())==0){
-            $this->render_pagina("Vocabulario","vocabulario.php");
-        }else{            
-            switch ($this->rutas->get_id()){
-                case "verbosRegulares":
-                    $this->render_pagina("Vocabulario: Verbos Regulares","listadoVerbosRegulares.php");
-                    break;
-                case "verbosIrregulares":
-                    $this->render_pagina("Vocabulario: Verbos Irregulares","listadoVerbosIrregulares.php");
-                    break;
-                case "verbosCompuesto":
-                    $this->render_pagina("Vocabulario: Verbos Compuestos","listadoVerbosCompuestos.php");
-                    break;
-            }
+        
+    private function gramatica($opcion) {
+        
+        switch ($opcion){
+            default:
+                $this->render_contenedor("gramatica.php"); 
         }
+        
+        $this->render_pagina("Gramática");
+        
+    }
+    
+    private function vocabulario($opcion){
+        
+        require_once ('controlador_vocabulario.php');
+        $controlador_v = new controlador_vocabulario();
+        
+        $titulo = "Vocabulario";
+        
+        switch ($opcion){
+            case "verbosRegulares":
+                $this->render_contenedor("listadoVerbosRegulares.php");    
+                $this->pagina = preg_replace("/\#BLOQUE\#/ms", $controlador_v->obtener_verbos_regulares(), $this->pagina);
+                $titulo .= ": Verbos Regulares";
+                break;
+            case "verbosIrregulares":
+                $this->render_contenedor("listadoVerbosIrregulares.php");  
+                $this->pagina = preg_replace("/\#BLOQUE\#/ms", $controlador_v->obtener_verbos_irregulares(), $this->pagina);                
+                $titulo .= ": Verbos Irregulares";
+                break;
+            case "verbosCompuestos":
+                $this->render_contenedor("listadoVerbosCompuestos.php");  
+                $this->pagina = preg_replace("/\#BLOQUE\#/ms", $controlador_v->obtener_verbos_compuestos(), $this->pagina);                
+                $titulo .= ": Verbos Compuestos";
+                break;
+            case "otroVocabulario":
+                $this->render_contenedor("listadoOtroVocabulario.php");                            
+                $titulo .= ": Otro Vocabulario";
+                break;
+            default:
+                $this->render_contenedor("vocabulario.php");                  
+        }
+        $this->render_pagina($titulo);
+    }
+    
+    private function configuracion($opcion){
+        
+        $titulo = "Configuracion";
+        
+        switch ($opcion){
+            case "NuevoVerboRegular":
+                    $this->render_contenedor("AnadirVerboRegular.php");                        
+                    $titulo .= ": Verbos Regulares";
+                break;
+            
+            default:
+                $this->render_contenedor("configuracion.php"); 
+        }
+        
+        $this->render_pagina($titulo);
+    }
+    
+    private function grabar ($opcion){
+        
+        require_once ('controlador_configuracion.php');
+        $controlador_c = new controlador_configuracion();
+        
+        switch ($opcion){
+            case "VerboRegular":
+                return $controlador_c->grabar_v_regular ($_POST);
+        }
+                
     }
     
         
