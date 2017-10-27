@@ -25,6 +25,18 @@ class modelo_configuracion {
             $sql = "RegularVerbs_CRUD(5,$id,null,null)";
         }
         
+        if ($tipo==2){
+            $sql = "IrregularVerbs_CRUD(5,$id,null,null,null,null)";
+        }
+        
+        if ($tipo==3){
+            $sql = "PhrasalVerbs_CRUD(5,$id,null,null)";
+        }
+        
+        if ($tipo==4){
+            $sql = "OtherVocabulary_CRUD(5,$id,null,null,null)";
+        }
+        
         return $this->conexion->consultaSP($sql); 
     }
     

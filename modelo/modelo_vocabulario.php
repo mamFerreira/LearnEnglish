@@ -28,5 +28,10 @@ class modelo_vocabulario{
         return $this->conexion->consultaSP($sql);      
     }
     
+    function get_otro_vocabulario(){
+        $sql = "OtherVocabulary_CRUD(1,null,null,null,null)";
+        return $this->conexion->consultaSP($sql);
+    }
+    
     
 }

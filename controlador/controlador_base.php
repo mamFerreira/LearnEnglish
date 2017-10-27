@@ -120,7 +120,8 @@ class controlador_base{
                 $titulo .= ": Verbos Compuestos";
                 break;
             case "otroVocabulario":
-                $this->render_contenedor("listadoOtroVocabulario.php");                            
+                $this->render_contenedor("listadoOtroVocabulario.php");  
+                $this->pagina = preg_replace("/\#BLOQUE\#/ms", $controlador_v->obtener_otro_vocabulario(), $this->pagina); 
                 $titulo .= ": Otro Vocabulario";
                 break;
             default:
@@ -154,6 +155,15 @@ class controlador_base{
         switch ($opcion){
             case "VerboRegular":
                 $resultado = $controlador_c->borrar_verbo (1,$id);
+                break;
+            case "VerboIrregular":
+                $resultado = $controlador_c->borrar_verbo (2,$id);
+                break;
+            case "VerboCompuesto":
+                $resultado = $controlador_c->borrar_verbo (3,$id);
+                break;
+            case "OtroVocabulario":
+                $resultado = $controlador_c->borrar_verbo (4,$id);
                 break;
             default:
                 $resultado = -1;
