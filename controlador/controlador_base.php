@@ -132,6 +132,9 @@ class controlador_base{
     
     private function configuracion($opcion){
         
+        require_once ('controlador_configuracion.php');
+        $controlador_c = new controlador_configuracion();
+        
         $titulo = "Configuracion";
         
         switch ($opcion){
@@ -139,7 +142,19 @@ class controlador_base{
                     $this->render_contenedor("AnadirVerboRegular.php");                        
                     $titulo .= ": Verbos Regulares";
                 break;
-            
+            case "NuevoVerboIrregular":
+                    $this->render_contenedor("AnadirVerboIrregular.php");                        
+                    $titulo .= ": Verbos Regulares";
+                break;
+            case "NuevoVerboCompuesto":
+                    $this->render_contenedor("AnadirVerboCompuesto.php");                        
+                    $titulo .= ": Verbos Regulares";
+                break;
+            case "NuevoOtroVocabulario":
+                    $this->render_contenedor("AnadirOtroVocabulario.php");  
+                    $this->pagina = preg_replace("/\#BLOQUE0\#/ms", $controlador_c->obtener_opciones_tipo(), $this->pagina); 
+                    $titulo .= ": Verbos Regulares";
+                break;
             default:
                 $this->render_contenedor("configuracion.php"); 
         }

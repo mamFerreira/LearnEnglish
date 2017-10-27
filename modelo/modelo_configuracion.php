@@ -40,4 +40,11 @@ class modelo_configuracion {
         return $this->conexion->consultaSP($sql); 
     }
     
+    function get_tipos () {
+        
+        $sql = "TypeWord_CRUD(1,null,null)";
+        
+        return $this->conexion->consultaSP($sql);         
+    }
+    
 }

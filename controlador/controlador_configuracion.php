@@ -39,4 +39,17 @@ class controlador_configuracion {
         return $resultado;
         
     }
+    
+    public function obtener_opciones_tipo (){
+        
+        $tipos = $this->modelo->get_tipos();
+        
+        $resultado = "";
+        foreach ($tipos as $t) {            
+            $resultado .= "<option value=\"$t[0]\">$t[1]</option>";
+        }
+        
+        return $resultado;
+        
+    }
 }

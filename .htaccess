@@ -11,5 +11,5 @@ RewriteRule ^sobreMi index.php?controlador=sobre_mi
 RewriteRule ^vocabulario/(verbosRegulares|verbosIrregulares|verbosCompuestos|otroVocabulario)$ index.php?controlador=vocabulario&opcion=$1
 RewriteRule ^vocabulario/(VerboRegular|VerboIrregular|VerboCompuesto|OtroVocabulario)/borrar/([0-9]*)$ index.php?controlador=borrar&opcion=$1&id=$2
 
-RewriteRule ^configuracion/(NuevoVerboRegular|NuevoVerboIrregular|NuevoVerboCompuesto)$ index.php?controlador=configuracion&opcion=$1
+RewriteRule ^configuracion/(NuevoVerboRegular|NuevoVerboIrregular|NuevoVerboCompuesto|NuevoOtroVocabulario)$ index.php?controlador=configuracion&opcion=$1
 RewriteRule ^configuracion/grabar/(VerboRegular)$ index.php?controlador=grabar&opcion=$1 [QSA,L]

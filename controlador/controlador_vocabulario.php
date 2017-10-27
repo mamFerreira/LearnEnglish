@@ -18,7 +18,7 @@ class controlador_vocabulario {
         foreach ($verbos as $v) {
             $resultado .= "<tr id=\"fila$v[0]\"><td>$v[1]</td><td>$v[2]</td><td class=\"col-xs-1\">";
             $resultado .= "<a href=\"javascript:edit_row($v[0]);\"><span class=\"glyphicon glyphicon-pencil\"></span></a>&emsp;&emsp;";
-            $resultado .= "<a href=\"javascript:delete_row($v[0]);\"><span class=\"glyphicon glyphicon-trash\"></span></a>";
+            $resultado .= "<a href=\"javascript:delete_row($v[0],1);\"><span class=\"glyphicon glyphicon-trash\"></span></a>";
             $resultado .= "</td></tr>";
         }                
         
@@ -34,7 +34,7 @@ class controlador_vocabulario {
         foreach ($verbos as $v) {
             $resultado .= "<tr id=\"fila$v[0]\"><td>$v[1]</td><td>$v[2]</td><td>$v[3]</td><td>$v[4]</td><td class=\"col-xs-1\">";
             $resultado .= "<a href=\"javascript:edit_row($v[0]);\"><span class=\"glyphicon glyphicon-pencil\"></span></a>&emsp;&emsp;";
-            $resultado .= "<a href=\"javascript:delete_row($v[0]);\"><span class=\"glyphicon glyphicon-trash\"></span></a>";
+            $resultado .= "<a href=\"javascript:delete_row($v[0],2);\"><span class=\"glyphicon glyphicon-trash\"></span></a>";
             $resultado .= "</td></tr>";
         }
         
@@ -49,7 +49,7 @@ class controlador_vocabulario {
         foreach ($verbos as $v) {            
             $resultado .= "<tr id=\"fila$v[0]\"><td>$v[1]</td><td>$v[2]</td><td class=\"col-xs-1\">";
             $resultado .= "<a href=\"javascript:edit_row($v[0]);\"><span class=\"glyphicon glyphicon-pencil\"></span></a>&emsp;&emsp;";
-            $resultado .= "<a href=\"javascript:delete_row($v[0]);\"><span class=\"glyphicon glyphicon-trash\"></span></a>";
+            $resultado .= "<a href=\"javascript:delete_row($v[0],3);\"><span class=\"glyphicon glyphicon-trash\"></span></a>";
             $resultado .= "</td></tr>";
         }
         
@@ -64,7 +64,7 @@ class controlador_vocabulario {
         foreach ($verbos as $v) {            
             $resultado .= "<tr id=\"fila$v[0]\"><td>$v[1]</td><td>$v[2]</td><td>$v[3]</td><td class=\"col-xs-1\">";
             $resultado .= "<a href=\"javascript:edit_row($v[0]);\"><span class=\"glyphicon glyphicon-pencil\"></span></a>&emsp;&emsp;";
-            $resultado .= "<a href=\"javascript:delete_row($v[0]);\"><span class=\"glyphicon glyphicon-trash\"></span></a>";
+            $resultado .= "<a href=\"javascript:delete_row($v[0],4);\"><span class=\"glyphicon glyphicon-trash\"></span></a>";
             $resultado .= "</td></tr>";
         }
         

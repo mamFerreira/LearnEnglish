@@ -39,7 +39,7 @@
                             <li><a href="#RUTA_BASE#/configuracion/NuevoVerboRegular">Add Regular Verbs</a></li>
                             <li><a href="#RUTA_BASE#/configuracion/NuevoVerboIrregular">Add Irregular Verbs</a></li>
                             <li><a href="#RUTA_BASE#/configuracion/NuevoVerboCompuesto">Add Phrasal Verbs</a></li>
-                            <li><a href="#RUTA_BASE#/configuracion/NuevoOtraPalabra">Add Other Vocabulary</a></li>
+                            <li><a href="#RUTA_BASE#/configuracion/NuevoOtroVocabulario">Add Other Vocabulary</a></li>
                         </ul>
                     </li>
                     <li class="#OPCION6#"><a href="#RUTA_BASE#/sobreMi"><span class="glyphicon glyphicon-user"></span> About me</a></li>                            
