@@ -11,17 +11,32 @@ class controlador_configuracion {
         $this->modelo = new modelo_configuracion();
     }
     
-    public function grabar_v_regular ($valores){
+    public function guardar_verbo ($tipo,$valores){
         global $ruta_base; 
         
-        require_once ('clases/VerboRegular.php');
-        $verbo = new VerboRegular ($valores["english"], $valores["spanish"]);
-        
-        $resultado = $this->modelo->insert_verbo_regular($verbo);
-        
-        if ($resultado>0){
-            header('Location: ' . $ruta_base . "/configuracion/NuevoVerboRegular");
+        if ($tipo == 1){
+            require_once ('clases/VerboRegular.php');
+            $verbo = new VerboRegular ($valores["english"], $valores["spanish"]);
+
+            $resultado = $this->modelo->insert_verbo_regular($verbo);
+
+            if ($resultado>0){
+                header('Location: ' . $ruta_base . "/configuracion/NuevoVerboRegular");
+            }
         }
         
-    }     
+    }   
+    
+    public function borrar_verbo ($tipo,$id){
+        
+        $salida = $this->modelo->borrar_verbo($tipo,$id);
+        $resultado = -1;
+        
+        foreach ($salida as $s) {
+            $resultado = $s[0];
+        }
+        
+        return $resultado;
+        
+    }
 }

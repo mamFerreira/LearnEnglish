@@ -1,0 +1,1 @@
+<img src="#RUTA_BASE#/vista/imagen/portada_sobre_mi.jfif" class="img-responsive center-block" alt="Cinque Terre">

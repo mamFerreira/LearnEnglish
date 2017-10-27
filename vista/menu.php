@@ -12,10 +12,10 @@
             </div>
             <div class="collapse navbar-collapse" id="acolapsar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="#OPCION1#"><a href="#RUTA_BASE#/home"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
-                    <li class="#OPCION2#"><a href="#RUTA_BASE#/gramatica"><span class="glyphicon glyphicon-book"></span> Gramática</a></li>
+                    <li class="#OPCION1#"><a href="#RUTA_BASE#/home"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                    <li class="#OPCION2#"><a href="#RUTA_BASE#/gramatica"><span class="glyphicon glyphicon-book"></span> Grammar</a></li>
                     <li class="dropdown #OPCION3#">
-                        <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-header"></span> Vocabulario<b class="caret"></b></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-header"></span> Vocabulary<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="#RUTA_BASE#/vocabulario/verbosRegulares">Regular Verbs</a></li>
                             <li><a href="#RUTA_BASE#/vocabulario/verbosIrregulares">Irregular Verbs</a></li>
@@ -24,7 +24,7 @@
                         </ul>
                     </li>
                     <li class="dropdown #OPCION4#">
-                        <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-pencil"></span> Ejercicios<b class="caret"></b></a> 
+                        <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-pencil"></span> Exercises<b class="caret"></b></a> 
                         <ul class="dropdown-menu">
                             <li><a href="#RUTA_BASE#/">Regular Verbs</a></li>
                             <li><a href="#RUTA_BASE#/">Irregular Verbs</a></li>
@@ -34,7 +34,7 @@
                         </ul>
                     </li>
                     <li class="dropdown #OPCION5#">
-                        <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Configuración<b class="caret"></b></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Configuration<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="#RUTA_BASE#/configuracion/NuevoVerboRegular">Add Regular Verbs</a></li>
                             <li><a href="#RUTA_BASE#/configuracion/NuevoVerboIrregular">Add Irregular Verbs</a></li>
@@ -42,7 +42,7 @@
                             <li><a href="#RUTA_BASE#/configuracion/NuevoOtraPalabra">Add Other Vocabulary</a></li>
                         </ul>
                     </li>
-                    <li class="#OPCION6#"><a href="#"><span class="glyphicon glyphicon-user"></span> Sobre mi</a></li>                            
+                    <li class="#OPCION6#"><a href="#RUTA_BASE#/sobreMi"><span class="glyphicon glyphicon-user"></span> About me</a></li>                            
                 </ul>
             </div>
         </div>

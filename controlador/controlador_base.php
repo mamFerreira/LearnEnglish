@@ -19,7 +19,10 @@ class controlador_base{
         if (method_exists($this, $this->rutas->get_controlador())) {
             $controlador = $this->rutas->get_controlador();
             $opcion = $this->rutas->get_opcion();
-            $this->$controlador($opcion);
+            $id = $this->rutas->get_id();
+            
+            $this->$controlador($opcion,$id);
+            
         } else {
             $this->home();
         }
@@ -143,6 +146,22 @@ class controlador_base{
         $this->render_pagina($titulo);
     }
     
+    private function borrar($opcion,$id){
+        
+        require_once ('controlador_configuracion.php');
+        $controlador_c = new controlador_configuracion();        
+        
+        switch ($opcion){
+            case "VerboRegular":
+                $resultado = $controlador_c->borrar_verbo (1,$id);
+                break;
+            default:
+                $resultado = -1;
+        }
+        
+        echo $resultado;
+    }
+    
     private function grabar ($opcion){
         
         require_once ('controlador_configuracion.php');
@@ -153,6 +172,13 @@ class controlador_base{
                 return $controlador_c->grabar_v_regular ($_POST);
         }
                 
+    }
+    
+    private function sobre_mi() {
+        
+        $this->render_contenedor("sobreMi.php"); 
+        $this->render_pagina("Sobre mi");
+               
     }
     
         

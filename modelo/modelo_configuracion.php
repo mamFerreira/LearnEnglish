@@ -19,4 +19,13 @@ class modelo_configuracion {
         return $this->conexion->ultima_fila();
     }
     
+    function borrar_verbo ($tipo, $id){
+        
+        if ($tipo==1){
+            $sql = "RegularVerbs_CRUD(5,$id,null,null)";
+        }
+        
+        return $this->conexion->consultaSP($sql); 
+    }
+    
 }

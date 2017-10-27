@@ -54,6 +54,10 @@ body {
 	background-color: #e5e5e5;
 }
 
+a{
+    color:#2E2E2E;
+}
+
 @media screen and (min-width: 768px) {
   .header,
   .marketing,
