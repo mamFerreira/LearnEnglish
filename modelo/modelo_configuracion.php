@@ -11,14 +11,40 @@ class modelo_configuracion {
     }
     
     function insert_verbo_regular(VerboRegular $verbo){
-        $sql = "INSERT INTO regular_verbs(english_verb,spanish_verb) values(:english,:spanish)";
-        $sentencia = $this->conexion->sentenciaPreparada($sql);
-        $sentencia->bindValue(":english", $verbo->get_verbo_ingles(), PDO::PARAM_STR);
-        $sentencia->bindValue(":spanish", $verbo->get_verbo_espanol(), PDO::PARAM_STR);
-        $sentencia->execute();
-        return $this->conexion->ultima_fila();
+        $english_v = $verbo->get_verbo_ingles();
+        $spanish_v = $verbo->get_verbo_espanol();
+        $sql = "RegularVerbs_CRUD(3,null,'$english_v','$spanish_v')";
+        
+        return $this->conexion->consultaSP($sql); 
     }
     
+    function insert_verbo_irregular(VerboIrregular $verbo){
+        $infinitive = $verbo->get_infinitivo();
+        $past_simple = $verbo->get_pasado_simple();
+        $past_participle = $verbo->get_pasado_participio();
+        $spanish = $verbo->get_espanol();        
+        $sql = "IrregularVerbs_CRUD(3,null,'$infinitive','$past_simple','$past_participle','$spanish')";
+
+        return $this->conexion->consultaSP($sql); 
+    }
+    
+    function insert_verbo_compuesto(VerboCompuesto $verbo){
+        $english_v = $verbo->get_verbo_ingles();
+        $spanish_v = $verbo->get_verbo_espanol();
+        $sql = "PhrasalVerbs_CRUD(3,null,'$english_v','$spanish_v')";       
+        
+        return $this->conexion->consultaSP($sql); 
+    }
+    
+    function  insert_otro_vocabulario (OtroVocabulario $p){
+        $tipo = $p->get_tipo();
+        $english = $p->get_ingles();
+        $spanish = $p->get_espanol();
+        $sql = "OtherVocabulary_CRUD(3,null,'$english','$spanish',$tipo)";       
+        
+        return $this->conexion->consultaSP($sql); 
+    }
+            
     function borrar_verbo ($tipo, $id){
         
         if ($tipo==1){

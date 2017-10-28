@@ -104,22 +104,22 @@ class controlador_base{
         $titulo = "Vocabulario";
         
         switch ($opcion){
-            case "verbosRegulares":
+            case "VerboRegular":
                 $this->render_contenedor("listadoVerbosRegulares.php");    
                 $this->pagina = preg_replace("/\#BLOQUE\#/ms", $controlador_v->obtener_verbos_regulares(), $this->pagina);
                 $titulo .= ": Verbos Regulares";
                 break;
-            case "verbosIrregulares":
+            case "VerboIrregular":
                 $this->render_contenedor("listadoVerbosIrregulares.php");  
                 $this->pagina = preg_replace("/\#BLOQUE\#/ms", $controlador_v->obtener_verbos_irregulares(), $this->pagina);                
                 $titulo .= ": Verbos Irregulares";
                 break;
-            case "verbosCompuestos":
+            case "VerboCompuesto":
                 $this->render_contenedor("listadoVerbosCompuestos.php");  
                 $this->pagina = preg_replace("/\#BLOQUE\#/ms", $controlador_v->obtener_verbos_compuestos(), $this->pagina);                
                 $titulo .= ": Verbos Compuestos";
                 break;
-            case "otroVocabulario":
+            case "OtroVocabulario":
                 $this->render_contenedor("listadoOtroVocabulario.php");  
                 $this->pagina = preg_replace("/\#BLOQUE\#/ms", $controlador_v->obtener_otro_vocabulario(), $this->pagina); 
                 $titulo .= ": Otro Vocabulario";
@@ -194,9 +194,23 @@ class controlador_base{
         
         switch ($opcion){
             case "VerboRegular":
-                return $controlador_c->grabar_v_regular ($_POST);
+                $resultado = $controlador_c->guardar_verbo (1,$_POST);
+                break;
+            case "VerboIrregular":
+                $resultado =  $controlador_c->guardar_verbo (2,$_POST);
+                break;
+            case "VerboCompuesto":
+                $resultado =  $controlador_c->guardar_verbo (3,$_POST);
+                break;
+            case "OtroVocabulario":
+                $resultado =  $controlador_c->guardar_verbo (4,$_POST);
+                break;
+            default:
+                $resultado =  -1;                
         }
-                
+        
+        echo $resultado;
+        
     }
     
     private function sobre_mi() {

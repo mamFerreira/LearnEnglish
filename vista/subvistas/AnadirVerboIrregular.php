@@ -3,7 +3,7 @@
 </div>
 <div class="row marketing">
     <div class="col-lg-12">
-        <form role="form" id="formulario" action="grabar/VerboRegular" enctype="multipart/form-data" method="post">
+        <form role="form" id="formulario" action="grabar/VerboIrregular" enctype="multipart/form-data" method="post">
             <div class="form-group col-lg-3">
                 <label for="english">Infinitive</label>
                 <input type="text" class="form-control" id="infinitive" name="infinitive" placeholder="Introduce el infinitivo" maxlength="128" required>

@@ -17,10 +17,10 @@
                     <li class="dropdown #OPCION3#">
                         <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-header"></span> Vocabulary<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#RUTA_BASE#/vocabulario/verbosRegulares">Regular Verbs</a></li>
-                            <li><a href="#RUTA_BASE#/vocabulario/verbosIrregulares">Irregular Verbs</a></li>
-                            <li><a href="#RUTA_BASE#/vocabulario/verbosCompuestos">Phrasal Verbs</a></li>
-                            <li><a href="#RUTA_BASE#/vocabulario/otroVocabulario">Other Vocabulary</a></li>                                    
+                            <li><a href="#RUTA_BASE#/vocabulario/VerboRegular">Regular Verbs</a></li>
+                            <li><a href="#RUTA_BASE#/vocabulario/VerboIrregular">Irregular Verbs</a></li>
+                            <li><a href="#RUTA_BASE#/vocabulario/VerboCompuesto">Phrasal Verbs</a></li>
+                            <li><a href="#RUTA_BASE#/vocabulario/OtroVocabulario">Other Vocabulary</a></li>                                    
                         </ul>
                     </li>
                     <li class="dropdown #OPCION4#">

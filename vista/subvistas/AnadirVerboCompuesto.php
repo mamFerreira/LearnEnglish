@@ -3,7 +3,7 @@
 </div>
 <div class="row marketing">
     <div class="col-lg-12">
-        <form role="form" id="formulario" action="grabar/VerboRegular" enctype="multipart/form-data" method="post">
+        <form role="form" id="formulario" action="grabar/VerboCompuesto" enctype="multipart/form-data" method="post">
             <div class="form-group col-lg-6">
                 <label for="english">Verb</label>
                 <input type="text" class="form-control" id="verb" name="verb" placeholder="Introduce el phrasal verb" maxlength="128" required>
