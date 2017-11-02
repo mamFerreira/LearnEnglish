@@ -53,28 +53,38 @@ class controlador_ejercicios {
     }
 
     function corregirEjercicios($valores) {
-        $resultado = "";
+        $resultado_aux = "";
+        $n_correcto = 0;
+        $n_preguntas = 0;
 
         $numeroR = (int) $valores["numberR"];
         $numeroI = (int) $valores["numberI"];
         $numeroC = (int) $valores["numberC"];
         $numeroO = (int) $valores["numberO"];   
         
+        $n_preguntas = $numeroR + $numeroI + $numeroC + $numeroO;
+        
+        
         if ($numeroR>0){
-            $resultado .= $this->corregirEjerciciosR($valores,$numeroR);
+            $resultado_aux .= $this->corregirEjerciciosR($valores,$numeroR,$n_correcto);
         }
         
         if ($numeroI>0){
-            $resultado .= $this->corregirEjerciciosI($valores,$numeroI);
+            $resultado_aux .= $this->corregirEjerciciosI($valores,$numeroI,$n_correcto);
         }
         
         if ($numeroC>0){
-            $resultado .= $this->corregirEjerciciosC($valores,$numeroC);
+            $resultado_aux .= $this->corregirEjerciciosC($valores,$numeroC,$n_correcto);
         }
         
         if ($numeroO>0){
-            $resultado .= $this->corregirEjerciciosO($valores,$numeroO);
-        }       
+            $resultado_aux .= $this->corregirEjerciciosO($valores,$numeroO,$n_correcto);
+        }  
+        
+        $porcentaje = round(($n_correcto/$n_preguntas) * 100.0,2);
+        
+        $resultado = "<h3 class=\"text-primary\">Results:<b>$porcentaje%</b> ($n_correcto of $n_preguntas)</h3></br></br>";
+        $resultado .= $resultado_aux;
         
         return $resultado;
     }
@@ -183,7 +193,7 @@ class controlador_ejercicios {
         return $resultado;
     }
     
-    private function corregirEjerciciosR($valores,$numero){
+    private function corregirEjerciciosR($valores,$numero,&$n){
         
         $resultado = "";
         
@@ -197,6 +207,7 @@ class controlador_ejercicios {
 
             if ($this->modelo->corregirVerboRegular($valores["R_ID_$i"], $valores["R_SOL_$i"], $pregunta, $solucion)) {
                 $resultado .= "<div class=\"col-sm-12 panel panel-default\" style=\"color:#128C07;\" >";
+                $n ++;
             } else {
                 $resultado .= "<div class=\"col-sm-12 panel panel-default\" style=\"color:#A80505;\" >";
             }
@@ -223,6 +234,7 @@ class controlador_ejercicios {
 
             if ($this->modelo->corregirVerboIrregular($valores["I_ID_$i"], array($valores["I_SOL1_$i"],$valores["I_SOL2_$i"],$valores["I_SOL3_$i"]), $pregunta, $solucion)) {
                 $resultado .= "<div class=\"col-sm-12 panel panel-default\" style=\"color:#128C07;\" >";
+                $n ++;
             } else {
                 $resultado .= "<div class=\"col-sm-12 panel panel-default\" style=\"color:#A80505;\" >";
             }
@@ -251,6 +263,7 @@ class controlador_ejercicios {
 
             if ($this->modelo->corregirVerboCompuesto($valores["C_ID_$i"], $valores["C_SOL_$i"], $pregunta, $solucion)) {
                 $resultado .= "<div class=\"col-sm-12 panel panel-default\" style=\"color:#128C07;\" >";
+                $n ++;
             } else {
                 $resultado .= "<div class=\"col-sm-12 panel panel-default\" style=\"color:#A80505;\" >";
             }
@@ -277,6 +290,7 @@ class controlador_ejercicios {
 
             if ($this->modelo->corregirOtroVocabulario($valores["O_ID_$i"], $valores["O_SOL_$i"], $pregunta, $solucion, $tipo)) {
                 $resultado .= "<div class=\"col-sm-12 panel panel-default\" style=\"color:#128C07;\" >";
+                $n ++;
             } else {
                 $resultado .= "<div class=\"col-sm-12 panel panel-default\" style=\"color:#A80505;\" >";
             }
