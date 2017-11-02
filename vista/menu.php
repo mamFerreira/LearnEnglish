@@ -22,17 +22,8 @@
                             <li><a href="#RUTA_BASE#/vocabulario/VerboCompuesto">Phrasal Verbs</a></li>
                             <li><a href="#RUTA_BASE#/vocabulario/OtroVocabulario">Other Vocabulary</a></li>                                    
                         </ul>
-                    </li>
-                    <li class="dropdown #OPCION4#">
-                        <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-pencil"></span> Exercises<b class="caret"></b></a> 
-                        <ul class="dropdown-menu">
-                            <li><a href="#RUTA_BASE#/">Regular Verbs</a></li>
-                            <li><a href="#RUTA_BASE#/">Irregular Verbs</a></li>
-                            <li><a href="#RUTA_BASE#/">Phrasal Verbs</a></li>
-                            <li><a href="#RUTA_BASE#/">Other Vocabulary</a></li>
-                            <li><a href="#RUTA_BASE#/">All</a></li>
-                        </ul>
-                    </li>
+                    </li>                                      
+                    <li class="#OPCION4#"><a href="#RUTA_BASE#/ejercicios"><span class="glyphicon glyphicon-pencil"></span> Exercises</a></li>
                     <li class="dropdown #OPCION5#">
                         <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Configuration<b class="caret"></b></a>
                         <ul class="dropdown-menu">

@@ -130,6 +130,31 @@ class controlador_base{
         $this->render_pagina($titulo);
     }
     
+    private function ejercicios($opcion){                    
+        
+        $titulo = "Ejercicios";
+                
+        switch ($opcion){
+            case "start":  
+                require_once ('controlador_ejercicios.php');
+                $controlador_e = new controlador_ejercicios();  
+                $controlador_e->cargar($_POST);
+                $this->render_contenedor("Ejercicios.php");  
+                $this->pagina = preg_replace("/\#BLOQUE\#/ms", $controlador_e->generarEjercicios(), $this->pagina);                 
+                break;
+            case "end": 
+                require_once ('controlador_ejercicios.php');
+                $controlador_e = new controlador_ejercicios();
+                $this->render_contenedor("EjerciciosResultados.php");     
+                $this->pagina = preg_replace("/\#BLOQUE\#/ms", $controlador_e->corregirEjercicios($_POST), $this->pagina);
+                break;
+            default:
+                $this->render_contenedor("EjerciciosOpciones.php"); 
+        }
+                
+        $this->render_pagina($titulo);
+    }
+    
     private function configuracion($opcion){
         
         require_once ('controlador_configuracion.php');

@@ -5,11 +5,15 @@ RewriteRule ^$ index.php?controlador=home
 RewriteRule ^home$ index.php?controlador=home
 RewriteRule ^gramatica$ index.php?controlador=gramatica
 RewriteRule ^vocabulario$ index.php?controlador=vocabulario
+RewriteRule ^ejercicios$ index.php?controlador=ejercicios
 RewriteRule ^configuracion$ index.php?controlador=configuracion
-RewriteRule ^sobreMi index.php?controlador=sobre_mi
+RewriteRule ^sobreMi$ index.php?controlador=sobre_mi
 
 RewriteRule ^vocabulario/(VerboRegular|VerboIrregular|VerboCompuesto|OtroVocabulario)$ index.php?controlador=vocabulario&opcion=$1
 RewriteRule ^vocabulario/(VerboRegular|VerboIrregular|VerboCompuesto|OtroVocabulario)/borrar/([0-9]*)$ index.php?controlador=borrar&opcion=$1&id=$2
+
+RewriteRule ^ejercicios/(start|end)$ index.php?controlador=ejercicios&opcion=$1 [QSA,L]
+
 
 RewriteRule ^configuracion/(NuevoVerboRegular|NuevoVerboIrregular|NuevoVerboCompuesto|NuevoOtroVocabulario)$ index.php?controlador=configuracion&opcion=$1
 RewriteRule ^configuracion/grabar/(VerboRegular|VerboIrregular|VerboCompuesto|OtroVocabulario)$ index.php?controlador=grabar&opcion=$1 [QSA,L]

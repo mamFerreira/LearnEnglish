@@ -5,8 +5,10 @@
     <thead>
         <tr>
             <th>English</th>
-            <th>Tipo</th>
+            <th>Type</th>
             <th>Translation</th>
+            <th>Consecutive</th>
+            <th>Knowledge (0-5)</th>
             <th>Actions</th>
         </tr>
     </thead>
